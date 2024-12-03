@@ -1,3 +1,4 @@
+# Data awal
 data_panen = {
     'lokasi1': {
         'nama_lokasi': 'Kebun A',
@@ -41,6 +42,41 @@ data_panen = {
     }
 }
 
-# Tampilkan seluruh data
+# 1. Tampilkan seluruh data
+print("Seluruh data panen:")
 for lokasi, data in data_panen.items():
     print(f"{lokasi}: {data}")
+print("\n")
+
+# 2. Tampilkan jumlah hasil panen jagung dari lokasi2
+hasil_jagung_lokasi2 = data_panen['lokasi2']['hasil_panen']['jagung']
+print(f"Hasil panen jagung dari lokasi2: {hasil_jagung_lokasi2}")
+print("\n")
+
+# 3. Tampilkan nama lokasi dari lokasi3
+nama_lokasi3 = data_panen['lokasi3']['nama_lokasi']
+print(f"Nama lokasi dari lokasi3: {nama_lokasi3}")
+print("\n")
+
+# 4. Masukkan jumlah hasil panen padi dan kedelai setiap lokasi ke dalam variabel yang berbeda
+hasil_padi = {}
+hasil_kedelai = {}
+
+for lokasi, data in data_panen.items():
+    hasil_padi[lokasi] = data['hasil_panen']['padi']
+    hasil_kedelai[lokasi] = data['hasil_panen']['kedelai']
+
+print("Hasil panen padi setiap lokasi:", hasil_padi)
+print("Hasil panen kedelai setiap lokasi:", hasil_kedelai)
+print("\n")
+
+# 5. Percabangan untuk memeriksa perhatian khusus
+print("Status perhatian khusus:")
+for lokasi, data in data_panen.items():
+    padi = data['hasil_panen']['padi']
+    jagung = data['hasil_panen']['jagung']
+    
+    if padi > 1300 or jagung > 800:
+        print(f"{data['nama_lokasi']} memerlukan perhatian khusus.")
+    else:
+        print(f"{data['nama_lokasi']} dalam kondisi baik.")
